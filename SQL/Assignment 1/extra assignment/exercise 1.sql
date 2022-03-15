@@ -10,7 +10,10 @@ ET_IQ tinyint unsigned,
 ET_Gmath tinyint unsigned,
 ET_English tinyint unsigned,
 Training_Class char(10),
-Evaluation_Notes text
+Evaluation_Notes text,
+check (ET_IQ >= 0 and ET_IQ <= 20),
+check (ET_Gmath >= 0 and ET_Gmath <= 20),
+check (ET_English >= 0 and ET_English <= 50)
 );
 
 alter table trainee
