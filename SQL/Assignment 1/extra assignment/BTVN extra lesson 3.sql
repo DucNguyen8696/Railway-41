@@ -33,8 +33,9 @@ where traineeID = (select max(length(full_name)) from trainee );
 -- question 4 
 select * from trainee
 group by TraineeID
-having sum(ET_IQ+ET_Gmath) >= 20 and ET_IQ >= 8 and ET_Gmath>=8 and ET_English>=18
+having ET_IQ+ET_Gmath >= 20 and ET_IQ >= 8 and ET_Gmath>=8 and ET_English>=18
 order by traineeID ;
+
 
 -- question 5
 delete from trainee where traineeid =3 ;

@@ -89,7 +89,7 @@ join department on a.department_number=department.department_number;
 select department.*,employee_table.employee_number,employee_table.employee_name from department
 join employee_table
 on department.department_number=employee_table.department_number
-group by department.department_number,department.department_name,employee_table.employee_number;
+group by employee_table.employee_number;
 
 -- question 6 
 select a.* ,employee_table.employee_name from 

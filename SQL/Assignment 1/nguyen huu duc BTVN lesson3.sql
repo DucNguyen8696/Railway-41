@@ -1,7 +1,7 @@
 use Testing_System_Assignment_1 ;
 -- question 2 
 SELECT 
-    departmentName
+*
 FROM
     department;
     
@@ -27,7 +27,7 @@ WHERE
 FROM
     `group`
 WHERE
-    createdate <= '2019-12-20';
+    createdate <'2019-12-20';
     
     -- question 7
     select questionID,count(questionID) from answer

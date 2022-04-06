@@ -23,10 +23,13 @@ join department
 on a.departmentID= department.departmentID; 
 
 -- question 5 
-select question.Content,a.* from (select max(sl),QuestionID from (select count(*)as sl,questionID from examquestion
-group by QuestionID) a order by max(sl) desc) a
-join question on
-question.QuestionID=a.QuestionID;
+select q.*,count(*) from question q
+join examquestion e
+on q.QuestionID=e.QuestionID
+group by q.QuestionID
+having count(*)=(select max(sl) from
+(select count(*) as sl ,questionID from examquestion
+group by QuestionID) a ) ;
 
 
  -- question 6 
@@ -43,10 +46,12 @@ group by QuestionID) a
 right join question on a.questionID=question.questionId ;
 
 -- question 8
-select a.*,question.Content 
-from 
-(select max(ctt),questionID from (select questionID,count(*) as ctt from answer group by QuestionID ) a) a
-join question on a.QuestionID=question.QuestionID ; 
+select q.*,count(*) as sl from question q
+join answer a on q.QuestionID=a.QuestionID
+group by QuestionID 
+having count(*)=(select max(sl) from
+(select count(*) as sl from answer
+group by QuestionID ) a);
 
 -- question 9 
 select a.*,`group`.GroupName from (select groupID,count(*) as slNG from groupaccount
